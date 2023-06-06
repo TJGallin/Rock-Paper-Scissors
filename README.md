@@ -10,15 +10,27 @@ Switch: Turn the Game on And off
 “Touch Sensor” - Initiates the “Lock In” state where the player locks in their response, and the game starts to generate the opponent's response. Raw range is 0 -> 1021, map() makes it 0 - 50
 
 Outputs:
+
 LED0- Opponent Scissors - Light Blue
+
 LED2 - Opponents Paper - Yellow 
+
 LED4 - Opponents Rock - Orange
+
 LED5 - User Rock - Red
+
 LED7 - User Paper - Green
+
 LED9 - User Scissors - White
+
 Tune0 - Sound to indicate a win
+
 Tune1 - Sound to indicate a loss
+
 Tune2 - Sound to indicate a draw
+
 VoiceMemo0 - Voice memo to indicate a win
+
 VoiceMemo1 - Voice memo to indicate a loss
+
 VoiceMemo2 - Voice memo to indicate a draw
