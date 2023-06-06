@@ -52,18 +52,18 @@ int song1[12][2] = {
 //  {127, 200},  // 127 will result in a frequency too high for the speaker to play, resulting in silence. You can use this as a "rest" or blank space in your melody
   };
 int song2[12][2] = {
-    {49, 50},
-    {49, 50},
-    {50, 50},
-    {51, 50},  
-    {52, 50},  
-    {53, 50}, 
-    {54, 50},
-    {55, 50},
-    {57, 50},
-    {57, 50},  
-    {58, 50},  
-    {59, 50}, 
+    {69, 50},
+    {69, 50},
+    {60, 50},
+    {61, 50},  
+    {62, 50},  
+    {63, 50}, 
+    {64, 50},
+    {65, 50},
+    {67, 50},
+    {67, 50},  
+    {68, 50},  
+    {69, 50}, 
   } ; 
 
 void setup() {
@@ -80,6 +80,7 @@ void setup() {
 
 
 void loop() {
+  //CircuitPlayground.speaker.set(355);
   int walue = CircuitPlayground.readCap(6);
   walue = map(walue, 0, 1023, 0, 50);
   Serial.print(walue);
@@ -252,6 +253,7 @@ void song11 ()
 {
      for(int i = 0; i < sizeof(song) / sizeof(song[0]); i++) // Calculate how many rows are in the array using: sizeof(song) / sizeof(song[0])
   {
+    CircuitPlayground.speaker.set(255);
     CircuitPlayground.playTone(midi[song[i][0]], song[i][1]); // firste one is the note, second one is the row
   }
 }
@@ -260,6 +262,7 @@ void song12 ()
 {
      for(int i = 0; i < sizeof(song) / sizeof(song1[0]); i++) // Calculate how many rows are in the array using: sizeof(song) / sizeof(song[0])
   {
+    CircuitPlayground.speaker.set(255);
     CircuitPlayground.playTone(midi[song1[i][0]], song1[i][1]); // firste one is the note, second one is the row
   }
 }
@@ -268,6 +271,7 @@ void song13 ()
 {
      for(int i = 0; i < sizeof(song) / sizeof(song2[0]); i++) // Calculate how many rows are in the array using: sizeof(song) / sizeof(song[0])
   {
+    CircuitPlayground.speaker.set(255);
     CircuitPlayground.playTone(midi[song2[i][0]], song2[i][1]); // firste one is the note, second one is the row
   }
 }
