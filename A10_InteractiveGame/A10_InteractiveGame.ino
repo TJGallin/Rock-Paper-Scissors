@@ -173,7 +173,7 @@ if (walue > 40 && (digitalRead (switchState) == HIGH)) {
   break;
 }
 }
- 
+
  }
 
 
@@ -223,7 +223,10 @@ void switchPressed ()
    if(CircuitPlayground.readCap(6) > 500){
    delay(5);
    } 
+   count0 = 0;
+   count1 = 0;
   } else if (digitalRead(switchState) == HIGH) {
+    delay(2000);
     Serial.println("DayTime Mode");
     CircuitPlayground.clearPixels();
   }
