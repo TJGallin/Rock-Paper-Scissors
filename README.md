@@ -33,8 +33,8 @@ Tune1 - Sound to indicate a loss
 
 Tune2 - Sound to indicate a draw
 
-VoiceMemo0 - Voice memo to indicate a win
+VoiceMemo0 - Voice memo to indicate a win (Postive)
 
-VoiceMemo1 - Voice memo to indicate a loss
+VoiceMemo1 - Voice memo to indicate a loss (Negative)
 
-VoiceMemo2 - Voice memo to indicate a draw
+VoiceMemo2 - Voice memo to indicate a draw (Stop)
