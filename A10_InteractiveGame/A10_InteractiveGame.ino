@@ -25,7 +25,7 @@ const uint8_t spSTOP[]      PROGMEM = {0x08,0xF8,0x92,0x8D,0x00,0x5F,0x89,0x32,0
 
 
 long randNumber;
-
+//All things we must state at the start
 int song[6][2] = { //song to indicate a draw
     {55, 100},
     {55, 100},
