@@ -26,7 +26,7 @@ const uint8_t spSTOP[]      PROGMEM = {0x08,0xF8,0x92,0x8D,0x00,0x5F,0x89,0x32,0
 
 long randNumber;
 
-int song[6][2] = {
+int song[6][2] = { //song to indicate a draw
     {55, 100},
     {55, 100},
     {57, 100},
@@ -36,7 +36,7 @@ int song[6][2] = {
 //  {127, 200},  // 127 will result in a frequency too high for the speaker to play, resulting in silence. You can use this as a "rest" or blank space in your melody
   };
 
-int song1[12][2] = {
+int song1[12][2] = { //song to indicate a loss
     {55, 50},
     {55, 50},
     {57, 50},
@@ -51,7 +51,7 @@ int song1[12][2] = {
     {59, 50}, 
 //  {127, 200},  // 127 will result in a frequency too high for the speaker to play, resulting in silence. You can use this as a "rest" or blank space in your melody
   };
-int song2[12][2] = {
+int song2[12][2] = { //song to indicate a win
     {69, 50},
     {69, 50},
     {60, 50},
@@ -81,7 +81,7 @@ void setup() {
 
 void loop() {
   //CircuitPlayground.speaker.set(355);
-  int walue = CircuitPlayground.readCap(6);
+  int walue = CircuitPlayground.readCap(6); //map and print values
   walue = map(walue, 0, 1023, 0, 50);
   Serial.print(walue);
   Serial.print(" ");
@@ -89,7 +89,7 @@ void loop() {
   Serial.print(" ");
   Serial.println(count1);
 
-   if (rbuttonFlag){
+   if (rbuttonFlag){ //flags for all inputs
     delay(5);
     digitalWrite(rbuttonState, state);
     rbuttonFlag = 0; 
@@ -101,7 +101,7 @@ void loop() {
     lbuttonFlag = 0; 
   }
   
-  if ((digitalRead (switchState) == HIGH)) {
+  if ((digitalRead (switchState) == HIGH)) { //Activation of players LEDS
  switch (count0) {
   case 0:
     CircuitPlayground.clearPixels();
@@ -124,9 +124,9 @@ void loop() {
   break;
 }
 }
-//randombrightnessCycle(10, 10);
-pinPressed ();
 
+pinPressed (); //instigates void pinPressed
+//Activation of opponents LEDS
 if ((digitalRead (switchState) == HIGH) && (walue > 40)) {
  switch (count1) {
   case 0:
@@ -150,7 +150,7 @@ Serial.println("loading");
 pin2 ();
 delay(1000);
 }
-
+//final outcome choices
 if (walue > 40 && (digitalRead (switchState) == HIGH)) {
  switch (count2) {
   case 0:
@@ -178,7 +178,7 @@ if (walue > 40 && (digitalRead (switchState) == HIGH)) {
 
 
 void pinPressed ()
-{
+{ //randomly determines opponents LEDS
   if(CircuitPlayground.readCap(6) > 500){
     randNumber = random(3);
     Serial.println(randNumber);
@@ -192,7 +192,7 @@ void pinPressed ()
   }
 }
 
-void pin2 ()
+void pin2 () //Final outcome determiner 
 {
   if ((count0 == 0) && (count1 == 0)){
     count2 = 0;
@@ -216,7 +216,7 @@ count2 = 2;
 AysncFlag = 0;
 }
 void switchPressed ()
-{
+{ //On/Off Switch
   if (digitalRead(switchState) == LOW) {
    Serial.println("NightTime Mode");
    CircuitPlayground.clearPixels();
@@ -234,8 +234,8 @@ void switchPressed ()
 
 }
 
-void lbuttonPressed  ()
-{
+void lbuttonPressed  () //Change Your Selection in the Scissor -> Paper -> Rock order
+{ 
   leftButtonPressed = CircuitPlayground.leftButton();
   if (leftButtonPressed && (count0 >=1)){
     count0 = count0 - 1;
@@ -243,8 +243,8 @@ void lbuttonPressed  ()
   }
 } 
 
-void rbuttonPressed ()
-{
+void rbuttonPressed () //Change Your Selection in the Rock -> Paper -> Scissors order
+{ 
   rightButtonPressed = CircuitPlayground.rightButton();
   if (rightButtonPressed && (count0 <=1)){
       count0 = count0 + 1;
@@ -252,7 +252,7 @@ void rbuttonPressed ()
   }
 }
 
-void song11 ()
+void song11 () //Final Song To Indicate A Draw
 {
      for(int i = 0; i < sizeof(song) / sizeof(song[0]); i++) // Calculate how many rows are in the array using: sizeof(song) / sizeof(song[0])
   {
@@ -261,7 +261,7 @@ void song11 ()
   }
 }
 
-void song12 ()
+void song12 () //Final Song To Indicate A Loss
 {
      for(int i = 0; i < sizeof(song) / sizeof(song1[0]); i++) // Calculate how many rows are in the array using: sizeof(song) / sizeof(song[0])
   {
@@ -270,7 +270,7 @@ void song12 ()
   }
 }
 
-void song13 ()
+void song13 () //Final Song To Indicate A Win
 {
      for(int i = 0; i < sizeof(song) / sizeof(song2[0]); i++) // Calculate how many rows are in the array using: sizeof(song) / sizeof(song[0])
   {
@@ -279,7 +279,7 @@ void song13 ()
   }
 }
 
-void generateMIDI()
+void generateMIDI() //Music Things
 {
   for (int x = 0; x < 127; ++x)
   {
